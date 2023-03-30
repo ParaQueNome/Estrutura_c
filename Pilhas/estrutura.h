@@ -1,4 +1,4 @@
-#define TAM_PILHA 10
+#define TAM_PILHA 50
 typedef int elem;
 typedef struct
 {
@@ -18,7 +18,7 @@ void Empty(Pilha *P);
 
 // Cria uma pilha
 void Create(Pilha *P){
-	//P = (Pilha*) malloc(sizeof(Pilha));  // CUIDADO: você não quer criar um vetor de Pilhas
+	P = (Pilha*) malloc(sizeof(Pilha));  // CUIDADO: você não quer criar um vetor de Pilhas
 	P->topo = -1;
 }
 
