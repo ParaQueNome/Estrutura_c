@@ -10,7 +10,7 @@ typedef struct
 // Cabeçalho dos métodos
 void Create (Pilha *P);
 void Push(Pilha *P, elem *X, bool *erro);
-void Pop(Pilha *P, bool *erro);
+int Pop(Pilha *P, bool *erro);
 bool IsFull(Pilha *P);
 bool IsEmpty(Pilha *P);
 void Empty(Pilha *P);
@@ -61,12 +61,13 @@ bool IsEmpty(Pilha *P)
 
 // Desempilha a pilha
 elem X;
-void Pop(Pilha *P, bool *erro)
+int Pop(Pilha *P, bool *erro)
 {
 	if(!IsEmpty(P)){
 		X = P->itens[P->topo];
 		P->topo--;
 		*erro = false;
+		return X;
 	}
 	*erro = true;
 }

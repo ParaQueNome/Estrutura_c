@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <locale>
-#include "estrutura.h"
+#include "estrutura_3.h"
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -21,9 +21,9 @@ int main() {
 		cout << "Insira um numero inteiro positivo ou negativo: ";
 		cin >> vet[i];
 		if(vet[i] % 2 == 0 ){
-			comp = vet[i];
 			
-			Push(&P1, &comp, &erro );
+			
+			Push(&P1, &vet[i], &erro );
 			cout << "Elemento inserido com sucesso! " << endl;
 		}else{
 			comp = vet[i];
@@ -35,23 +35,48 @@ int main() {
 		}
 		
 	
-	
-	
-	for(int i = 0; i <= P1.topo; i++ ){
-		if(P2.itens[i] >= 0){
-			Pop(&P2, &erro);
-			Push(&P3, &X, &erro);
+	//int vet2[P2.topo];
+	vet =(int*)realloc(vet,sizeof(P2.topo));
+	int x = P2.topo;
+	for(int i = 0; i < P2.topo; i++){
+		vet[i] = P2.itens[i];
+		
+	}
+	Empty(&P2);
+	for(int i = 0; i <= x; i++ ){
+		
+		
+		if(vet[i] >= 0){
+			
+			Push(&P3, &vet[i], &erro);
+			
 			cout << "Elemento inserido com sucesso! " << endl;
 			
-		}
-	}
-	for(int i =0; i <= P1.topo; i++){
-		if(P1.itens[i] <= -1){
-			Pop(&P1, &erro);
-			Push(&P3, &X, &erro);
+		}else{
+			Push(&P2, &vet[i], &erro);
 			cout << "Elemento inserido com sucesso! " << endl;
+		}
+		
+		
 	}
+	 vet =(int*)realloc(vet,sizeof(P1.topo));
+	 int y = P1.topo;
+	 for(int i = 0; i < P1.topo; i++){
+		vet[i] = P1.itens[i];
+		
 	}
+	Empty(&P1);
+	for(int i =0; i <= y; i++){
+		
+		if(vet[i] <= -1){
+			
+			
+			Push(&P3, &vet[i], &erro);
+			cout << "Elemento inserido com sucesso! " << endl;
+		}else{
+			Push(&P1, &vet[i], &erro);
+		}
+	} 
 	cout << "Pilha 1: " << endl;
 	cout << "----------------------------" << endl;
 	for(int i = 0; i <= P1.topo; i++){
